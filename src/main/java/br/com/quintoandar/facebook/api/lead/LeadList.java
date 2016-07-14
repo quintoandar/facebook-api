@@ -1,4 +1,4 @@
-package facebookAPI.lead;
+package br.com.quintoandar.facebook.api.lead;
 
 import java.util.List;
 
