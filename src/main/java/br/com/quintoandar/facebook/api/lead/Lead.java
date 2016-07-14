@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class Lead {
 	
-	public static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ss'Z'";
+	public static final String DATE_PATTERN = "yyyy-MM-dd'T'HH:mm:ssZ";
 	public static final String DATE_TIMEZONE = "GMT";
 	
 	private String id;
