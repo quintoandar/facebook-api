@@ -6,6 +6,8 @@ import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
+import br.com.quintoandar.facebook.api.form.Form;
+import br.com.quintoandar.facebook.api.form.FormAPI;
 import br.com.quintoandar.facebook.api.lead.Lead;
 import br.com.quintoandar.facebook.api.lead.LeadAPI;
 
@@ -13,16 +15,22 @@ public class FacebookAPI {
 
 	private String accessToken;
 	
+	private String facebookPageId;
+	
 	private LeadAPI leadApi;
 	
-	public FacebookAPI(String baseUrl, String accessToken) {
+	private FormAPI formApi;
+	
+	public FacebookAPI(String baseUrl, String accessToken, String pageId) {
 		this.accessToken = accessToken;
+		this.facebookPageId = pageId;
 		
 		ResteasyClient client = new ResteasyClientBuilder().build();
 		
 		ResteasyWebTarget target = client.target(baseUrl);
 
 		leadApi = target.proxy(LeadAPI.class);
+		formApi = target.proxy(FormAPI.class);
 	}
 	
 	public Lead getLead(String leadId) {
@@ -35,6 +43,10 @@ public class FacebookAPI {
 	
 	public List<Lead> getAdLeads(String adId) {
 		return leadApi.listAdLeads(this.accessToken, adId, null).getItems();
+	}
+	
+	public List<Form> getPageForms() {
+		return formApi.getFormList(accessToken, this.facebookPageId);
 	}
 		
 }
