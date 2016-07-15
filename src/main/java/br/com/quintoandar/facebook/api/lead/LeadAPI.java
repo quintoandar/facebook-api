@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import br.com.quintoandar.facebook.api.filter.Filter;
 
-@Path("/v2.5")
+@Path("/v2.7")
 public interface LeadAPI {
 
 	@GET

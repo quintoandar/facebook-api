@@ -3,13 +3,13 @@ package br.com.quintoandar.facebook.api.filter;
 import lombok.Data;
 
 @Data
-public class Filter<T> {
+public class Filter {
 
 	private String field;
 	
 	private FilterOperator operator;
 	
-	private T value;	
+	private String value;
 	
 	public static enum FilterOperator {  
 		EQUAL,
