@@ -12,16 +12,7 @@ public class ItemList<T> {
 	@JsonProperty("data")
 	private List<T> items;
 	
-	@JsonProperty("paging.cursors.before")
-	private String before;
-	
-	@JsonProperty("paging.cursors.after")
-	private String after;
-	
-	@JsonProperty("paging.next")
-	private String next;
-	
-	@JsonProperty("paging.previous")
-	private String previous;
+	@JsonProperty("paging")
+	private Paging paging;
 	
 }
