@@ -1,6 +1,6 @@
 package br.com.quintoandar.facebook.api;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
@@ -43,7 +43,7 @@ public class FacebookAPI {
 	}
 	
 	public LeadList getFormLeads(String formId, Optional<Long> sinceTimestamp, Optional<String> after) {
-		List<Filter> filters = Arrays.asList();
+		List<Filter> filters = new ArrayList<Filter>();
 		if (sinceTimestamp.isPresent()) {
 			Filter filter = new Filter();
 			filter.setField("time_created");
