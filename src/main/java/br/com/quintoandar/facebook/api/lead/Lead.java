@@ -33,4 +33,12 @@ public class Lead {
 	public LeadField getFieldByName(String name) {
 		return Iterables.tryFind(getData(), p -> name.equals(p.getName())).orNull();
 	}
+	
+	public String getSingleFieldValueByName(String name) {
+		LeadField field = getFieldByName(name);
+		if (field != null && field.getValues() != null && field.getValues().size() > 0) {
+			return field.getValues().get(0);
+		}
+		return null;
+	}
 }
