@@ -1,12 +1,10 @@
 package br.com.quintoandar.facebook.api.common;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import lombok.Data;
 
 @Data
-@JsonIgnoreProperties(ignoreUnknown=true)
 public class Paging {
 
 	@JsonProperty("next")
@@ -15,4 +13,6 @@ public class Paging {
 	@JsonProperty("previous")
 	private String previous;
 	
+	private Cursors cursors;
+		
 }
