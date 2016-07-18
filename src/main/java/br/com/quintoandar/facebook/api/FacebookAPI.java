@@ -1,15 +1,14 @@
 package br.com.quintoandar.facebook.api;
 
-import java.util.List;
-
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
-import br.com.quintoandar.facebook.api.form.Form;
 import br.com.quintoandar.facebook.api.form.FormAPI;
+import br.com.quintoandar.facebook.api.form.FormList;
 import br.com.quintoandar.facebook.api.lead.Lead;
 import br.com.quintoandar.facebook.api.lead.LeadAPI;
+import br.com.quintoandar.facebook.api.lead.LeadList;
 
 public class FacebookAPI {
 
@@ -37,15 +36,15 @@ public class FacebookAPI {
 		return leadApi.getLead(this.accessToken, leadId);
 	}
 	
-	public List<Lead> getFormLeads(String formId) {
-		return leadApi.listFormLeads(this.accessToken, formId, null).getItems();
+	public LeadList getFormLeads(String formId) {
+		return leadApi.listFormLeads(this.accessToken, formId, null);
 	}
 	
-	public List<Lead> getAdLeads(String adId) {
-		return leadApi.listAdLeads(this.accessToken, adId, null).getItems();
+	public LeadList getAdLeads(String adId) {
+		return leadApi.listAdLeads(this.accessToken, adId, null);
 	}
 	
-	public List<Form> getPageForms() {
+	public FormList getPageForms() {
 		return formApi.getFormList(accessToken, this.facebookPageId);
 	}
 		
