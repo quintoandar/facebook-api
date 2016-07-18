@@ -1,14 +1,19 @@
 package br.com.quintoandar.facebook.api.filter;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.Data;
 
 @Data
 public class Filter {
 
+	@JsonProperty
 	private String field;
 	
+	@JsonProperty
 	private FilterOperator operator;
 	
+	@JsonProperty
 	private String value;
 	
 	public static enum FilterOperator {  

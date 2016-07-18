@@ -51,7 +51,7 @@ public class FacebookAPI {
 			filter.setValue(sinceTimestamp.get().toString());
 			filters.add(filter);
 		}
-		return leadApi.listFormLeads(this.accessToken, formId, filters, after.isPresent() ? after.get() : null);
+		return leadApi.listFormLeads(this.accessToken, formId, filters, "");
 	}
 	
 	public LeadList getAdLeads(String adId) {
