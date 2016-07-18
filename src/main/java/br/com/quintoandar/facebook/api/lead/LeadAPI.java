@@ -17,7 +17,11 @@ public interface LeadAPI {
 	@GET
 	@Path("/{formId}/leads")
 	@Produces(MediaType.APPLICATION_JSON)
-	public LeadList listFormLeads(@QueryParam("access_token") String auth, @PathParam("formId") String formId, @QueryParam("filtering") List<Filter> filter);
+	public LeadList listFormLeads(
+			@QueryParam("access_token") String auth, 
+			@PathParam("formId") String formId, 
+			@QueryParam("filtering") List<Filter> filter, 
+			@QueryParam("after") String after);
 	
 	@GET
 	@Path("/{adId}/leads")
