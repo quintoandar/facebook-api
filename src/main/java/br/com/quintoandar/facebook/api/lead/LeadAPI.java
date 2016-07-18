@@ -20,8 +20,7 @@ public interface LeadAPI {
 	public LeadList listFormLeads(
 			@QueryParam("access_token") String auth, 
 			@PathParam("formId") String formId, 
-			@QueryParam("filtering") List<Filter> filter, 
-			@QueryParam("after") String after);
+			@QueryParam("filtering") List<Filter> filter);
 	
 	@GET
 	@Path("/{adId}/leads")
