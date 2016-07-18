@@ -52,7 +52,7 @@ public class FacebookAPI {
 			filters.add(filter);
 		}
 		
-		return leadApi.listFormLeads(this.accessToken, formId, filters);
+		return leadApi.listFormLeads(this.accessToken, formId, null, "1467331200", "");
 	}
 	
 	public LeadList getAdLeads(String adId) {

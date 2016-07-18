@@ -33,4 +33,16 @@ public class Filter {
 		ALL,
 		NONE
 	}
+
+	/*
+	ParamFilter toParam() {
+		return null;
+	}
+	
+	public static class ParamFilter {
+		public String toString() {
+			
+		}
+	}
+	*/
 }
