@@ -1,11 +1,15 @@
 package br.com.quintoandar.facebook.api;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 
 import com.google.common.base.Optional;
 
+import br.com.quintoandar.facebook.api.filter.Filter;
 import br.com.quintoandar.facebook.api.form.FormAPI;
 import br.com.quintoandar.facebook.api.form.FormList;
 import br.com.quintoandar.facebook.api.lead.Lead;
@@ -39,11 +43,17 @@ public class FacebookAPI {
 	}
 	
 	public LeadList getFormLeads(String formId, Long sinceTimestamp, Optional<String> after) {
-		return leadApi.listFormLeads(this.accessToken, formId, sinceTimestamp.toString(), after.isPresent() ? after.get() : null);
+		List<Filter> filters = new ArrayList<Filter>();
+		Filter filter = new Filter();
+		filter.setField("time_created");
+		filter.setOperator(Filter.FilterOperator.GREATER_THAN);
+		filter.setValue(sinceTimestamp.toString());
+		filters.add(filter);
+		return leadApi.listFormLeads(this.accessToken, formId, filters, after.isPresent() ? after.get() : null);
 	}
 	
 	public LeadList getAdLeads(String adId) {
-		return leadApi.listAdLeads(this.accessToken, adId);
+		return leadApi.listAdLeads(this.accessToken, adId, null);
 	}
 	
 	public FormList getPageForms() {
