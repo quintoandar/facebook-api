@@ -9,6 +9,7 @@ import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
 import com.google.common.base.Optional;
 
 import br.com.quintoandar.facebook.api.filter.Filter;
+import br.com.quintoandar.facebook.api.filter.Filtering;
 import br.com.quintoandar.facebook.api.form.FormAPI;
 import br.com.quintoandar.facebook.api.form.FormList;
 import br.com.quintoandar.facebook.api.lead.Lead;
@@ -42,7 +43,7 @@ public class FacebookAPI {
 	}
 	
 	public LeadList getFormLeads(String formId, List<Filter> filters, Optional<String> after) {
-		return leadApi.listFormLeads(this.accessToken, formId, filters, after.isPresent() ? after.get() : null);
+		return leadApi.listFormLeads(this.accessToken, formId, new Filtering(filters), after.isPresent() ? after.get() : null);
 	}
 	
 	public LeadList getAdLeads(String adId) {

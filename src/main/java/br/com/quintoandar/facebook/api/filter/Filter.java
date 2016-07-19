@@ -43,11 +43,6 @@ public class Filter {
 	}
 
 	/*
-	@Override
-	public String toString() {
-		return "{ 'field': '" + this.field + "', 'operator': '" + this.operator.name() + "', 'value': '" + this.value + "'}";
-	}
-
 	ParamFilter toParam() {
 		return null;
 	}
