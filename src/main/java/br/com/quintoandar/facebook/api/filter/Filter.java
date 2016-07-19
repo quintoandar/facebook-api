@@ -1,6 +1,7 @@
 package br.com.quintoandar.facebook.api.filter;
 
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -11,6 +12,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Filter {
 
 	@JsonProperty
@@ -40,12 +42,12 @@ public class Filter {
 		NONE
 	}
 
+	/*
 	@Override
 	public String toString() {
 		return "{ 'field': '" + this.field + "', 'operator': '" + this.operator.name() + "', 'value': '" + this.value + "'}";
 	}
 
-	/*
 	ParamFilter toParam() {
 		return null;
 	}
