@@ -17,4 +17,6 @@ public class Form {
 	private String locale;
 	
 	private String name;
+
+	private String status;
 }
