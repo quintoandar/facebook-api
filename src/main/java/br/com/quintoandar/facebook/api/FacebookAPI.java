@@ -1,12 +1,11 @@
 package br.com.quintoandar.facebook.api;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
-
-import com.google.common.base.Optional;
 
 import br.com.quintoandar.facebook.api.filter.Filter;
 import br.com.quintoandar.facebook.api.filter.Filtering;
@@ -43,6 +42,11 @@ public class FacebookAPI {
 	}
 	
 	public LeadList getFormLeads(String formId, List<Filter> filters, Optional<String> after) {
+		return leadApi.listFormLeads(this.accessToken, formId, new Filtering(filters), after.orElse(null));
+	}
+	
+	@Deprecated
+	public LeadList getFormLeads(String formId, List<Filter> filters, com.google.common.base.Optional<String> after) {
 		return leadApi.listFormLeads(this.accessToken, formId, new Filtering(filters), after.isPresent() ? after.get() : null);
 	}
 	
