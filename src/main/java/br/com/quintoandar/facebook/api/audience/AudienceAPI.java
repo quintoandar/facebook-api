@@ -17,9 +17,9 @@ public interface AudienceAPI {
   @Path("/act_{adAccountId}/customaudiences")
   @Produces(MediaType.APPLICATION_JSON)
   Audience createAudience(
+      @FormParam("access_token") String auth,
       @PathParam("adAccountId") String adAccountId,
       @FormParam("customer_file_source") String customerFileSource,
-      @FormParam("access_token") String auth,
       @FormParam("name") String name,
       @FormParam("description") String description,
       @FormParam("subtype") String subtype
