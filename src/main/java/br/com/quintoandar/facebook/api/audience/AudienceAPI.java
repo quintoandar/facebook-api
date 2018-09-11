@@ -1,5 +1,6 @@
 package br.com.quintoandar.facebook.api.audience;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -16,6 +17,7 @@ public interface AudienceAPI {
   @POST
   @Path("/act_{adAccountId}/customaudiences")
   @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
   Audience createAudience(
       @FormParam("access_token") String auth,
       @PathParam("adAccountId") String adAccountId,
@@ -28,11 +30,13 @@ public interface AudienceAPI {
   @DELETE
   @Path("/{customAudienceId}")
   @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
   Success deleteAudience(@PathParam("customAudienceId") String customAudienceId);
 
   @POST
   @Path("/{customAudienceId}/users")
   @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
   BatchUserUpdate insertUserInAudience(
       @PathParam("customAudienceId") String customAudienceId,
       String payload
@@ -41,6 +45,7 @@ public interface AudienceAPI {
   @DELETE
   @Path("/{customAudienceId}/users")
   @Produces(MediaType.APPLICATION_JSON)
+  @Consumes(MediaType.APPLICATION_JSON)
   BatchUserUpdate removeUserFromAudience(
       @PathParam("customAudienceId") String customAudienceId,
       String payload
