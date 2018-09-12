@@ -1,5 +1,6 @@
 package br.com.quintoandar.facebook.api;
 
+import br.com.quintoandar.facebook.api.audience.UsersPayload;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,6 +50,7 @@ public class FacebookAPI {
 		leadApi = target.proxy(LeadAPI.class);
 		formApi = target.proxy(FormAPI.class);
 		audienceAPI = target.proxy(AudienceAPI.class);
+
 	}
 	
 	public Lead getLead(String leadId) {
@@ -73,25 +75,27 @@ public class FacebookAPI {
 	}
 
 	public Audience createAudience(
-			String adAccountId,
 			String customerFileSource,
 			String name,
 			String description,
-			String subtype
+			String subtype,
+			Long retentionDays
 	) {
 		try {
 			return audienceAPI.createAudience(
 					this.accessToken,
-					adAccountId,
+					this.adAccountId,
 					customerFileSource,
 					name,
 					description,
-					subtype);
+					subtype,
+					null);
 		} catch (LoggableFailure e) {
-			throw  new FacebookAPIException(e.getResponse());
+			throw new FacebookAPIException(e.getResponse());
 		} catch (WebApplicationException e) {
-			throw  new FacebookAPIException(e.getResponse());
+			throw new FacebookAPIException(e.getResponse());
 		}
+
 	}
 
 	public void deleteAudience(String customAudienceId) {
@@ -106,7 +110,7 @@ public class FacebookAPI {
 		}
 	}
 
-	public BatchUserUpdate insertUserInAudience(String customAudienceId, String payload) {
+	public BatchUserUpdate insertUserInAudience(String customAudienceId, UsersPayload payload) {
 		try {
 			return audienceAPI.insertUserInAudience(customAudienceId, payload);
 		} catch (LoggableFailure e) {
@@ -116,7 +120,7 @@ public class FacebookAPI {
 		}
 	}
 
-	public BatchUserUpdate removeUserFromAudience(String customAudienceId, String payload) {
+	public BatchUserUpdate removeUserFromAudience(String customAudienceId, UsersPayload payload) {
 		try {
 			return audienceAPI.removeUserFromAudience(customAudienceId, payload);
 		} catch (LoggableFailure e) {

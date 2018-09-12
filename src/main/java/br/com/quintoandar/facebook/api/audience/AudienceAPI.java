@@ -11,7 +11,7 @@ import javax.ws.rs.core.MediaType;
 
 import br.com.quintoandar.facebook.api.common.Success;
 
-@Path("/v2.11")
+@Path("/v3.1")
 public interface AudienceAPI {
 
   @POST
@@ -24,7 +24,8 @@ public interface AudienceAPI {
       @FormParam("customer_file_source") String customerFileSource,
       @FormParam("name") String name,
       @FormParam("description") String description,
-      @FormParam("subtype") String subtype
+      @FormParam("subtype") String subtype,
+      @FormParam("retention_days") Long retentionDays
   );
 
   @DELETE
@@ -39,7 +40,7 @@ public interface AudienceAPI {
   @Consumes(MediaType.APPLICATION_JSON)
   BatchUserUpdate insertUserInAudience(
       @PathParam("customAudienceId") String customAudienceId,
-      String payload
+      UsersPayload payload
   );
 
   @DELETE
@@ -48,7 +49,7 @@ public interface AudienceAPI {
   @Consumes(MediaType.APPLICATION_JSON)
   BatchUserUpdate removeUserFromAudience(
       @PathParam("customAudienceId") String customAudienceId,
-      String payload
+      UsersPayload payload
   );
 
 }
