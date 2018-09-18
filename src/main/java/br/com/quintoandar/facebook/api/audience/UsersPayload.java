@@ -22,7 +22,7 @@ public class UsersPayload {
   Integer isRaw;
 
   public UsersPayload() {
-    schema = new ArrayList<>(Arrays.asList(Schema.EMAIL, Schema.PHONE));
+    schema = new ArrayList<>(Arrays.asList(Schema.FIRST_NAME, Schema.LAST_NAME, Schema.EMAIL, Schema.PHONE));
   }
 
   public enum Schema {
