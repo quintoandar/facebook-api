@@ -32,26 +32,15 @@ public class UsersPayload {
 
   @AllArgsConstructor
   public enum Schema implements FacebookDataSerialization {
-    FIRST_NAME("FN") {
-      public String facebookHashValue(String firstName) {
-        return !Strings.isNullOrEmpty(firstName) ? normalizeAndHash(firstName) : "";
-      }
-    },
-    LAST_NAME("LN") {
-      public String facebookHashValue(String lastName) {
-        return !Strings.isNullOrEmpty(lastName) ? normalizeAndHash(lastName) : "";
-      }
-    },
-    EMAIL {
-      public String facebookHashValue(String email) {
-        return !Strings.isNullOrEmpty(email) ? normalizeAndHash(email) : "";
-      }
-    },
+    FIRST_NAME("FN"),
+    LAST_NAME("LN"),
+    EMAIL,
     PHONE {
-      public String facebookHashValue(String phone) {
-        if (!Strings.isNullOrEmpty(phone)) {
+      @Override
+      public String facebookHashValue(String value) {
+        if (!Strings.isNullOrEmpty(value)) {
           String normalizedPhoneNumber =
-              PhoneUtils.getNumberE164Format(phone).substring(1);
+              PhoneUtils.getNumberE164Format(value).substring(1);
 
           return normalizeAndHash(normalizedPhoneNumber);
         }
@@ -63,6 +52,10 @@ public class UsersPayload {
 
     Schema() {
       this.tag = this.name();
+    }
+
+    public String facebookHashValue(String value) {
+      return !Strings.isNullOrEmpty(value) ? normalizeAndHash(value) : "";
     }
 
     @JsonValue

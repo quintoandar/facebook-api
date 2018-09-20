@@ -22,7 +22,7 @@ public class LoggingOutputStreamWrapper extends OutputStream {
       myBuffer.write(data);
       target.write(data);
       // When using @FormParam this logs will have to be enabled for debugging
-      log.debug(myBuffer.toString());
+      // log.info(myBuffer.toString());
     } catch (IOException e) {
       log.error("Could not write Facebook request data to internal buffer!", e);
     }
@@ -34,7 +34,7 @@ public class LoggingOutputStreamWrapper extends OutputStream {
       myBuffer.write(data);
       target.write(data);
       // When using @FormParam this logs will have to be enabled for debugging
-      log.debug(myBuffer.toString());
+      // log.info(myBuffer.toString());
     } catch (IOException e) {
       log.error("Could not write Facebook request data to internal buffer!", e);
     }
